@@ -21,39 +21,52 @@ public class movement : MonoBehaviour {
 		
 	}
 
+	void onTriggerEnter() {
+		Debug.Log("Hit");
+	}
 	void FixedUpdate() {
 		
 		//mv2();
-		
-		Debug.Log(transform.rotation.x + "  " + transform.rotation.y + " " + transform.rotation.z);
-		Debug.Log(transform.position.x + "  " + minX);
+		Debug.Log(transform.rotation);
+		//Debug.Log(transform.rotation.x + "  " + transform.rotation.y + " " + transform.rotation.z);
+		//Debug.Log(transform.position.x + "  " + minX);
+		Quaternion rot1 = new Quaternion(0.7f,0,0,-0.7f);
+			 transform.rotation = rot1;   
 		 if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > minX)
          {
-			 Debug.Log("left");
+			 //Debug.Log("left");
              transform.position += Vector3.left * speed * Time.deltaTime;
-         }
+			 Quaternion rot = new Quaternion(0.7f,0.2f,0,-0.7f);
+			 transform.rotation = rot;         }
          else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < maxX)
          {
-			 Debug.Log("right");
+			 //Debug.Log("right");
              transform.position += Vector3.right * speed * Time.deltaTime;
+			 Quaternion rot = new Quaternion(0.7f,-0.2f,0,-0.7f);
+			 transform.rotation = rot;   
          }
          if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxY)
          {
-			 Debug.Log("up");
+			 //Debug.Log("up");
              transform.position += Vector3.up * speed * Time.deltaTime;
+			 Quaternion rot = new Quaternion(0.7f,0,0,-0.9f);
+			 transform.rotation = rot;   
          }
          else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > minY)
          {
-			  Debug.Log("down");
+			  //Debug.Log("down");
              transform.position += Vector3.down * speed * Time.deltaTime;
+			 Quaternion rot = new Quaternion(0.7f,0,0,-0.5f);
+			 transform.rotation = rot;   
          }
 		 rigidbody.velocity = Vector3.forward * speed ;
 		 //Debug.Log("Position is : "+ transform.position.x + " ahah " + transform.position.y);
 	}
 
 void mv2() {
-	//Debug.Log(transform.localEulerAngles.y + " " + transform.localEulerAngles.x + "  " + transform.rotation.w);
-	//Debug.Log(Math.Cos(transform.rotation.y) + "  " + Math.Sin(transform.rotation.y));
+	Debug.Log(transform.rotation.eulerAngles.y );
+	//Debug.Log("rot " +transform.localRotation.x);
+	//Debug.Log(Math.Cos(transform.rotation.x) + "  " + Math.Sin(transform.rotation.x));
 	//float Angle=Quaternion.Angle(Quaternion.Euler(new Vector3(0,0,0)),transform.rotation);
 
 		float Angle=Quaternion.Angle(Quaternion.Euler(new Vector3(0,0,1)),transform.rotation);
@@ -61,7 +74,7 @@ void mv2() {
 		float ang = (transform.localEulerAngles.x+90)%360;
 		float beta = 90 - ang;
 		float radang = (float)(beta * Math.PI/180);
-		Debug.Log(transform.rotation.x);
+		//Debug.Log(transform.rotation.x);
 		Vector3 dir = new Vector3((float)Math.Cos(radang),(float)(Math.Sin(radang)), 0);
 		if(transform.rotation.x<0){
 			dir = new Vector3(-(float)Math.Cos(radang),(float)(Math.Sin(radang)), 0);
