@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/AwesomeScene.unity
+- path: Assets/Scene/AwesomeScene.unity
   isLoaded: 1
   isActive: 1

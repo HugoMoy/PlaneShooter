@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 public class movement : MonoBehaviour {
 
@@ -27,17 +28,7 @@ public class movement : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision collision)
-    {
-		Debug.Log("Hit !!!");
-		Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
- 		Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
-        
-    }
+	
 	void OnTriggerEnter(Collider collision)
 	{
 		if(collision.gameObject.name == "Turn"){

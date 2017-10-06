@@ -51,10 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\btnmanager.cs" />
-     <Compile Include="Assets\followplane.cs" />
-     <Compile Include="Assets\movement.cs" />
-     <Compile Include="Assets\water.cs" />
+     <Compile Include="Assets\planemanager.cs" />
+     <Compile Include="Assets\Scripts\btnmanager.cs" />
+     <Compile Include="Assets\Scripts\followplane.cs" />
+     <Compile Include="Assets\Scripts\movement.cs" />
+     <Compile Include="Assets\Scripts\water.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
