@@ -14,8 +14,9 @@ public class movement : MonoBehaviour {
 	public Rigidbody rigidbody;
 	private Boolean start = false;
 	// Use this for initialization
-	void letsgo(){
+	public void letsgo(){
 		start = true;
+		Debug.Log("Let's go !!!");
 	}
 	void Start () {
 		 

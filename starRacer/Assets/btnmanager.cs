@@ -4,9 +4,11 @@ using UnityEngine;
 
 
 public class btnmanager : MonoBehaviour {
-	OtherScript target;
-	public void NewGameButton(string NewGameLevel) {
-		GameObject.Find("GameObject").GetComponent(movement).letsgo();
+	public GameObject plane;
+	public GameObject menu;
+	public void NewGameButton() {
+		plane.GetComponent<movement>().letsgo();
+		menu.SetActive(false);
 	}
 
 	public void MainMenuButton(string NewGameLevel) {
