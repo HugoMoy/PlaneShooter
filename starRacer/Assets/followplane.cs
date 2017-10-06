@@ -16,7 +16,7 @@ public class followplane : MonoBehaviour {
 		// if we want camera to follow movements
 		Vector3 newPos = planePos.position;
 		newPos.y += 2;
-		newPos.z -= 5;
+		newPos.z -= 7;
 		transform.position = newPos;
 		if (Input.GetKey(KeyCode.Space))
 		{

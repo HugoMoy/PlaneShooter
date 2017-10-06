@@ -9,9 +9,14 @@ public class movement : MonoBehaviour {
 	private float maxX = 30;
 	private float maxY = 30;
 	private int speed = 40;
-
+	private int rotate = 0;
+	private Quaternion rot = Quaternion.identity;//new Quaternion(0.7f,0,0,-0.7f);
 	public Rigidbody rigidbody;
+	private Boolean start = false;
 	// Use this for initialization
+	void letsgo(){
+		start = true;
+	}
 	void Start () {
 		 
 	}
@@ -24,58 +29,89 @@ public class movement : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
     {
 		Debug.Log("Hit !!!");
+		Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
+ 		Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );
         foreach (ContactPoint contact in collision.contacts)
         {
             Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
         
     }
+	void OnTriggerEnter(Collider collision)
+	{
+		if(collision.gameObject.name == "Turn"){
+			Debug.Log("HOHOHOHO");
+
+			
+			//transform.rotation = rot2
+		}
+	}
 	void FixedUpdate() {
+
+		if(start) {
+		Quaternion inclineLeft = Quaternion.identity * Quaternion.Euler(0,0,20);
+		Quaternion inclineRight = Quaternion.identity * Quaternion.Euler(0,0,-20);
+		Quaternion inclineUp = Quaternion.identity * Quaternion.Euler(-20,0,0);
+		Quaternion inclineDown = Quaternion.identity * Quaternion.Euler(20,0,0);
+		Boolean hasMoved = false;
 		
 		//mv2();
 		//Debug.Log(transform.rotation);
 		//Debug.Log(transform.rotation.x + "  " + transform.rotation.y + " " + transform.rotation.z);
 		//Debug.Log(transform.position.x + "  " + minX);
-		Quaternion rot1 = new Quaternion(0.7f,0,0,-0.7f);
+		//Debug.Log("pos"+transform.position);
+		Quaternion rot1 = rot;
 		transform.rotation = rot1;   
 		if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > minX)
 		{
-			//Debug.Log("left");
 			transform.position += Vector3.left * speed/2 * Time.deltaTime;
-			Quaternion rot = new Quaternion(0.7f,0.2f,0,-0.7f);
-			transform.rotation = rot;         }
+			transform.rotation = inclineLeft;  
+			if (!Input.GetKey(KeyCode.Space)){
+				hasMoved = true;   
+			} 
+			//Debug.Log()
+		}
 		else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < maxX)
 		{
 			//Debug.Log("right");
 			transform.position += Vector3.right * speed/2 * Time.deltaTime;
-			Quaternion rot = new Quaternion(0.7f,-0.2f,0,-0.7f);
-			transform.rotation = rot;   
+			transform.rotation = inclineRight;   
+			if (!Input.GetKey(KeyCode.Space)){
+				hasMoved = true;   
+			} 
 		}
 		if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxY)
 		{
 			//Debug.Log("up");
 			transform.position += Vector3.up * speed/4 * Time.deltaTime;
-			Quaternion rot = new Quaternion(0.7f,0,0,-0.5f);
-			transform.rotation = rot;   
+			transform.rotation = inclineUp;    
+			if (!Input.GetKey(KeyCode.Space)){
+				hasMoved = true;   
+			} 
+			//Quaternion rot = new Quaternion(0,0.02f,0,0);
+			//transform.rotation = rot;   
 		}
 		else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > minY)
 		{
-			//Debug.Log("down");
 			transform.position += Vector3.down * speed/4 * Time.deltaTime;
-			Quaternion rot = new Quaternion(0.7f,0,0,-0.9f);
-			transform.rotation = rot;   
+			transform.rotation = inclineDown;    
+			if (!Input.GetKey(KeyCode.Space)){
+				hasMoved = true;   
+			} 
 		}
-		rigidbody.velocity = Vector3.forward * speed ;
-
-		if (Input.GetKey(KeyCode.Space))
-		{
-			speed = 80;     
+		Debug.Log(rigidbody.transform.position);
+		if(hasMoved){
+			transform.position += Vector3.forward/2;
 		} else {
-			speed = 40;
+			if (Input.GetKey(KeyCode.Space)){
+				transform.position += Vector3.forward*2;
+			} else {
+				transform.position += Vector3.forward;
+			}
 		}
 		 //Debug.Log("Position is : "+ transform.position.x + " ahah " + transform.position.y);
+		}
 	}
-
 void mv2() {
 	Debug.Log(transform.rotation.eulerAngles.y );
 	//Debug.Log("rot " +transform.localRotation.x);
