@@ -13,6 +13,8 @@ public class movement : MonoBehaviour {
 	private int rotate = 0;
 	private Quaternion rot = Quaternion.identity;//new Quaternion(0.7f,0,0,-0.7f);
 	public Rigidbody rigidbody;
+	public Vector3 startPositionRigidbody;
+	public bool check = false;
 	private Boolean start = false;
 	// Use this for initialization
 	public void letsgo(){
@@ -20,14 +22,18 @@ public class movement : MonoBehaviour {
 		Debug.Log("Let's go !!!");
 	}
 	void Start () {
-		 
+		startPositionRigidbody = rigidbody.position; 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(rigidbody.transform.position.z >= 1500 && !check) {
+			levelManager.DisabledLevel ("LEVEL1");
+			levelManager.EnabledLevel ("LEVEL2"); //not working
+			rigidbody.position = startPositionRigidbody;
+			check = true;
+		}
 	}
-
 	
 	void OnTriggerEnter(Collider collision)
 	{

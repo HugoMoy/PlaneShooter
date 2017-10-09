@@ -54,6 +54,7 @@
      <Compile Include="Assets\planemanager.cs" />
      <Compile Include="Assets\Scripts\btnmanager.cs" />
      <Compile Include="Assets\Scripts\followplane.cs" />
+     <Compile Include="Assets\Scripts\levelManager.cs" />
      <Compile Include="Assets\Scripts\movement.cs" />
      <Compile Include="Assets\Scripts\rotate.cs" />
      <Compile Include="Assets\Scripts\soundManager.cs" />
