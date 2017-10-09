@@ -8,7 +8,9 @@ public class btnmanager : MonoBehaviour {
 	public GameObject menu;
 	public void NewGameButton() {
 		plane.GetComponent<movement>().letsgo();
+		soundManager.StarAllAudio ();
 		menu.SetActive(false);
+
 	}
 
 	public void MainMenuButton(string NewGameLevel) {
