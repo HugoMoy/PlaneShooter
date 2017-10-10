@@ -14,9 +14,12 @@ public class followplane : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		// if we want camera to follow movements
+		// other option y += 2 and z += 7	
+		// other option y += 1 and z += 4	
+
 		Vector3 newPos = planePos.position;
-		newPos.y += 2;
-		newPos.z -= 7;
+		newPos.y += 1;
+		newPos.z -= 4;
 		transform.position = newPos;
 		if (Input.GetKey(KeyCode.Space))
 		{

@@ -12,7 +12,7 @@ public class planemanager : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
     {
 
-		SceneManager.LoadScene("AwesomeScene");
+		SceneManager.LoadScene("GameScene");
 		Debug.Log("Hit !!!");
 		Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
  		Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );
