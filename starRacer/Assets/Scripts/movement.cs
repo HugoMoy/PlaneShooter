@@ -14,7 +14,7 @@ public class movement : MonoBehaviour {
 	private Quaternion rot = Quaternion.identity;//new Quaternion(0.7f,0,0,-0.7f);
 	public Rigidbody rigidbody;
 	public Vector3 startPositionRigidbody;
-	public bool check = false;
+	public int checkLevel = 1;
 	private Boolean start = false;
 	// Use this for initialization
 	public void letsgo(){
@@ -27,11 +27,14 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(rigidbody.transform.position.z >= 1500 && !check) {
-			levelManager.DisabledLevel ("LEVEL1");
-			levelManager.EnabledLevel ("LEVEL2"); //not working
+		if(rigidbody.transform.position.z >= 1500) {
+			levelManager.DisabledLevel(checkLevel - 1);
+			levelManager.EnabledLevel (checkLevel);
+			followplane.ResetPosition ();
+			Timer.currentTimerFinished();
 			rigidbody.position = startPositionRigidbody;
-			check = true;
+			transform.position = startPositionRigidbody;
+			checkLevel++;
 		}
 	}
 	

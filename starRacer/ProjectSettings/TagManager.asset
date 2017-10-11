@@ -7,6 +7,7 @@ TagManager:
   - LEVEL1
   - LEVEL2
   - LEVEL3
+  - Pause
   layers:
   - Default
   - TransparentFX

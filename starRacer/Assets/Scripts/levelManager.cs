@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class levelManager : MonoBehaviour {
+	public static List<GameObject> levelPrefabs;
+	int levels = 3;
 
 	// Use this for initialization
 	void Start () {
-		EnabledLevel ("LEVEL1");
-		DisabledLevel ("LEVEL2");
-		DisabledLevel ("LEVEL3");	
+		levelPrefabs = new List<GameObject> ();
+		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL1")[0]);
+		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL2")[0]);
+		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL3")[0]);
+
+		EnabledLevel (0);
+		DisabledLevel (1);
+		DisabledLevel (2);	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
-	}
-		
-	public static void DisabledLevel(string namelevel) {
-		ChangeStatusLevel(namelevel, false);
+
 	}
 
-	public static void EnabledLevel(string namelevel) {
-		ChangeStatusLevel(namelevel, true);
+	public static void DisabledLevel(int lvlnumber) {
+		ChangeStatusLevel(levelPrefabs[lvlnumber], false);
 	}
 
-	private static void ChangeStatusLevel(string namelevel, bool status) {
-		GameObject[] levelPrefabs = GameObject.FindGameObjectsWithTag (namelevel);
+	public static void EnabledLevel(int lvlnumber) {
+		ChangeStatusLevel(levelPrefabs[lvlnumber], true);
+	}
 
-		foreach (GameObject go in levelPrefabs) {
-			go.SetActive (status);
-		}
+	private static void ChangeStatusLevel(GameObject lvl, bool status) {
+		lvl.SetActive (status);
 	}
 }
