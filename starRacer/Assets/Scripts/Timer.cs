@@ -19,7 +19,9 @@ public class Timer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		starttime = Time.time;
-		Debug.Log("Started timer ");
+		currentTimer =1;
+		Debug.Log("Started timer " + currentTimer);
+		
 	}
 	
 	// Update is called once per frame
