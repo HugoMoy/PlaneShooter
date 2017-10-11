@@ -10,6 +10,7 @@ TagManager:
   - Pause
   - LEVEL1Bis
   - Tutorial
+  - Score
   layers:
   - Default
   - TransparentFX

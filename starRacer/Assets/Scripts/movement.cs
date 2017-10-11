@@ -38,6 +38,7 @@ public class movement : MonoBehaviour {
 	public void nextLevel() {
 		Debug.Log("NextLevelmovement call");
 		levelManager.DisabledLevel(checkLevel - 1);
+		
 		levelManager.EnabledLevel (checkLevel);
 		Timer.currentTimerFinished();
 		//rigidbody.transform.position = startPositionRigidbody;

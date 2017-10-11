@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class scoremanager : MonoBehaviour {
 
-	private int stars = 0;
+	static public int stars = 0;
 	// Use this for initialization
+	void Awake() {
+       
+    }
 	void Start () {
-		
+		 DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -18,5 +21,9 @@ public class scoremanager : MonoBehaviour {
 	public void AddStar() {
 		stars++;
 		GetComponent<Text>().text = stars.ToString();
+	}
+
+	public int getStars() {
+		return stars;
 	}
 }
