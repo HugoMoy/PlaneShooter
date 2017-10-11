@@ -11,8 +11,9 @@ public class planemanager : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision collision)
     {
-
-		SceneManager.LoadScene("GameScene");
+		
+		SceneManager.LoadScene("EndScene");
+		//GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<movement>().reset();
 		//Debug.Log("Hit !!!");
 		//Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
  		//Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );

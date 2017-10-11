@@ -25,11 +25,15 @@ public class movement : MonoBehaviour {
 	}
 	void Start () {
 		startPositionRigidbody = rigidbody.position; 
+		Timer.pause();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+	}
+	public void reset() {
+		start = false;
 	}
 	public void nextLevel() {
 		Debug.Log("NextLevelmovement call");

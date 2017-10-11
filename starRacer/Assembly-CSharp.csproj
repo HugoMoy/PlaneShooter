@@ -51,16 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\getStar.cs" />
-     <Compile Include="Assets\nextLevel.cs" />
-     <Compile Include="Assets\planemanager.cs" />
-     <Compile Include="Assets\rotatepales.cs" />
-     <Compile Include="Assets\scoremanager.cs" />
+     <Compile Include="Assets\GmOvrManager.cs" />
      <Compile Include="Assets\Scripts\btnmanager.cs" />
      <Compile Include="Assets\Scripts\followplane.cs" />
+     <Compile Include="Assets\Scripts\getStar.cs" />
      <Compile Include="Assets\Scripts\levelManager.cs" />
      <Compile Include="Assets\Scripts\movement.cs" />
+     <Compile Include="Assets\Scripts\nextLevel.cs" />
+     <Compile Include="Assets\Scripts\pause.cs" />
+     <Compile Include="Assets\Scripts\planemanager.cs" />
      <Compile Include="Assets\Scripts\rotate.cs" />
+     <Compile Include="Assets\Scripts\rotatepales.cs" />
+     <Compile Include="Assets\Scripts\scoremanager.cs" />
      <Compile Include="Assets\Scripts\soundManager.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\water.cs" />
