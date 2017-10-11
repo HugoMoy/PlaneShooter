@@ -13,9 +13,9 @@ public class planemanager : MonoBehaviour {
     {
 
 		SceneManager.LoadScene("GameScene");
-		Debug.Log("Hit !!!");
-		Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
- 		Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );
+		//Debug.Log("Hit !!!");
+		//Debug.Log( "collide (name) : " + collision.collider.gameObject.name );
+ 		//Debug.Log( "collide (tag) : " + collision.collider.gameObject.tag );
         foreach (ContactPoint contact in collision.contacts)
         {
             Debug.DrawRay(contact.point, contact.normal, Color.white);

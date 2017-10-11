@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour {
 	public Text timerText;
 	public Text timerText2;
 	public Text timerText3;
+	public Text timerText4;
 
 	public static bool paused = true;
 	public static int currentTimer = 1;
@@ -19,11 +20,11 @@ public class Timer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		starttime = Time.time;
+		Debug.Log("Started timer ");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (paused) {
 			return;
 		}
@@ -39,9 +40,12 @@ public class Timer : MonoBehaviour {
 			timerText.text = getTime (t);
 		} else if (currentTimer == 2) {
 			timerText2.text = getTime (t);
-		} else {
+		} else if (currentTimer == 3) {
 			timerText3.text = getTime (t);
+		} else {
+			timerText4.text = getTime (t);
 		}
+
 	}
 
 	public string getTime(float t) {

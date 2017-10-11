@@ -8,6 +8,8 @@ TagManager:
   - LEVEL2
   - LEVEL3
   - Pause
+  - LEVEL1Bis
+  - Tutorial
   layers:
   - Default
   - TransparentFX

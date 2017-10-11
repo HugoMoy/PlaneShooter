@@ -19,7 +19,9 @@ public class movement : MonoBehaviour {
 	// Use this for initialization
 	public void letsgo(){
 		start = true;
-		Debug.Log("Let's go !!!");
+		Debug.Log("Initial position " + transform.position);
+		Debug.Log("Rigid position " + rigidbody.transform.position);
+		
 	}
 	void Start () {
 		startPositionRigidbody = rigidbody.position; 
@@ -27,25 +29,18 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(rigidbody.transform.position.z >= 1500) {
-			levelManager.DisabledLevel(checkLevel - 1);
-			levelManager.EnabledLevel (checkLevel);
-			followplane.ResetPosition ();
-			Timer.currentTimerFinished();
-			rigidbody.position = startPositionRigidbody;
-			transform.position = startPositionRigidbody;
-			checkLevel++;
-		}
-	}
-	
-	void OnTriggerEnter(Collider collision)
-	{
-		if(collision.gameObject.name == "Turn"){
-			Debug.Log("HOHOHOHO");
 
-			
-			//transform.rotation = rot2
-		}
+	}
+	public void nextLevel() {
+		Debug.Log("NextLevelmovement call");
+		levelManager.DisabledLevel(checkLevel - 1);
+		levelManager.EnabledLevel (checkLevel);
+		Timer.currentTimerFinished();
+		//rigidbody.transform.position = startPositionRigidbody;
+		transform.position = startPositionRigidbody;
+		checkLevel++;
+		Debug.Log("Position next level " + transform.position);
+		Debug.Log("RigidBody position " + rigidbody.transform.position);
 	}
 	void FixedUpdate() {
 
@@ -57,10 +52,6 @@ public class movement : MonoBehaviour {
 		Boolean hasMoved = false;
 		
 		//mv2();
-		//Debug.Log(transform.rotation);
-		//Debug.Log(transform.rotation.x + "  " + transform.rotation.y + " " + transform.rotation.z);
-		//Debug.Log(transform.position.x + "  " + minX);
-		//Debug.Log("pos"+transform.position);
 		Quaternion rot1 = rot;
 		transform.rotation = rot1;   
 		if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > minX)
@@ -70,11 +61,9 @@ public class movement : MonoBehaviour {
 			if (!Input.GetKey(KeyCode.Space)){
 				hasMoved = true;   
 			} 
-			//Debug.Log()
 		}
 		else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < maxX)
 		{
-			//Debug.Log("right");
 			transform.position += Vector3.right * speed/2 * Time.deltaTime;
 			transform.rotation = inclineRight;   
 			if (!Input.GetKey(KeyCode.Space)){
@@ -83,7 +72,6 @@ public class movement : MonoBehaviour {
 		}
 		if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxY)
 		{
-			//Debug.Log("up");
 			transform.position += Vector3.up * speed/4 * Time.deltaTime;
 			transform.rotation = inclineUp;    
 			if (!Input.GetKey(KeyCode.Space)){
@@ -100,7 +88,7 @@ public class movement : MonoBehaviour {
 				hasMoved = true;   
 			} 
 		}
-		Debug.Log(rigidbody.transform.position);
+		//Debug.Log(rigidbody.transform.position);
 		if(hasMoved){
 			transform.position += Vector3.forward/2;
 		} else {
@@ -110,21 +98,14 @@ public class movement : MonoBehaviour {
 				transform.position += Vector3.forward;
 			}
 		}
-		 //Debug.Log("Position is : "+ transform.position.x + " ahah " + transform.position.y);
 		}
 	}
 void mv2() {
-	Debug.Log(transform.rotation.eulerAngles.y );
-	//Debug.Log("rot " +transform.localRotation.x);
-	//Debug.Log(Math.Cos(transform.rotation.x) + "  " + Math.Sin(transform.rotation.x));
-	//float Angle=Quaternion.Angle(Quaternion.Euler(new Vector3(0,0,0)),transform.rotation);
 
 		float Angle=Quaternion.Angle(Quaternion.Euler(new Vector3(0,0,1)),transform.rotation);
-		//Debug.Log(Angle);
 		float ang = (transform.localEulerAngles.x+90)%360;
 		float beta = 90 - ang;
 		float radang = (float)(beta * Math.PI/180);
-		//Debug.Log(transform.rotation.x);
 		Vector3 dir = new Vector3((float)Math.Cos(radang),(float)(Math.Sin(radang)), 0);
 		if(transform.rotation.x<0){
 			dir = new Vector3(-(float)Math.Cos(radang),(float)(Math.Sin(radang)), 0);
@@ -134,27 +115,21 @@ void mv2() {
 
 		 if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > minX)
          {
-			 Debug.Log("left");
              transform.Rotate(Vector3.up * 10);
 			 
 		 }
          else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < maxX)
          {
-			 Debug.Log("right");
              transform.Rotate(Vector3.down * 10);
          }
          if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxY)
          {
-			 Debug.Log("up");
-			 
              transform.position += dir * speed * Time.deltaTime;
          }
          else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > minY)
          {
-			  Debug.Log("down");
              transform.position += -dir * speed * Time.deltaTime;
          }
 		 rigidbody.velocity = Vector3.forward * speed ;
-		 //Debug.Log("Position is : "+ transform.position.x + " ahah " + transform.position.y);
 }
 }

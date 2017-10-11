@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class levelManager : MonoBehaviour {
 	public static List<GameObject> levelPrefabs;
-	int levels = 3;
+	int levels = 4;
 
 	// Use this for initialization
 	void Start () {
 		levelPrefabs = new List<GameObject> ();
+
+		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("Tutorial")[0]);
 		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL1")[0]);
 		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL2")[0]);
 		levelPrefabs.Add(GameObject.FindGameObjectsWithTag ("LEVEL3")[0]);
@@ -16,6 +18,7 @@ public class levelManager : MonoBehaviour {
 		EnabledLevel (0);
 		DisabledLevel (1);
 		DisabledLevel (2);	
+		DisabledLevel (3);	
 	}
 
 	// Update is called once per frame
