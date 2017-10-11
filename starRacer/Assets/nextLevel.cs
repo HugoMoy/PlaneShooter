@@ -14,7 +14,7 @@ public class nextLevel : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter(){
-		Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaAAAAAAAA");
+		//Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaAAAAAAAA");
 		camera.GetComponent<followplane>().nextLevel();
 	}
 }
